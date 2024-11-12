@@ -16,23 +16,10 @@
         <maven.compiler.source>${target.java.version}</maven.compiler.source>
         <maven.compiler.target>${target.java.version}</maven.compiler.target>
         <flink.version>2.0-preview1</flink.version>
-        <aws.connector.version>4.3.0-1.19</aws.connector.version>
+        <aws.connector.version>5.0.0-1.20</aws.connector.version>
         <kda.runtime.version>1.2.0</kda.runtime.version>
         <log4j.version>2.23.1</log4j.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.amazonaws</groupId>
-                <artifactId>aws-java-sdk-bom</artifactId>
-                <!-- Get the latest SDK version from https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-bom -->
-                <version>1.12.677</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <!-- Apache Flink dependencies -->
@@ -55,7 +42,7 @@
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-kinesisanalytics-runtime</artifactId>
             <version>${kda.runtime.version}</version>
-            <scope>provided</scope>
+<!--            <scope>provided</scope>-->
         </dependency>
 
         <!-- Connectors and Formats -->
@@ -88,10 +75,16 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
-        <directory>${buildDirectory}</directory>
         <finalName>${jar.finalName}</finalName>
 
         <plugins>
